@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
     
     const textUser1 = document.getElementById('textUser1');
     const textUser2 = document.getElementById('textUser2');
+
+    const nameUser1 = document.getElementById('nameUser1');
+    const nameUser2 = document.getElementById('nameUser2');
     
     const userBtn1 = document.querySelector('#user1 button');
     const userBtn2 = document.querySelector('#user2 button');
@@ -28,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const message = textUser1.value;
         if (message) {
             const messages = retrieveMessage('user1Messages');
-            messages.push({ sender: 'User 1', message });
+            messages.push({ sender: `${nameUser2.value}`, message });
             storeContent('user1Messages', messages);
             
-            appendMessage(messageContent1, 'User 1', message);
-            appendMessage(messageContent2, 'User 1', message);
+            appendMessage(messageContent1, 'sender1', message);
+            appendMessage(messageContent2, 'sender1', message);
             
             textUser1.value = '';
         }
@@ -42,11 +45,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const message = textUser2.value;
         if (message) {
             const messages = retrieveMessage('user2Messages');
-            messages.push({ sender: 'User 2', message });
+            messages.push({ sender: `${nameUser2.value}`, message });
             storeContent('user2Messages', messages);
             
-            appendMessage(messageContent2, 'User 2', message);
-            appendMessage(messageContent1, 'User 2', message);
+            appendMessage(messageContent2, 'sender2', message);
+            appendMessage(messageContent1, 'sender2', message);
             
             textUser2.value = '';
         }
@@ -66,5 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function appendMessage(container, sender, message) {
     const messageElement = document.createElement('div');
     messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+    // messageElement.style.color = 'blue'
     container.appendChild(messageElement);
 }
