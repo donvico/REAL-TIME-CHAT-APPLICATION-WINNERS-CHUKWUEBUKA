@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const message = textUser1.value;
         if (message) {
             const messages = retrieveMessage('user1Messages');
-            messages.push({ sender: `${nameUser2.value}`, message });
+            messages.push({ sender: `${nameUser1.value}`, message });
             storeContent('user1Messages', messages);
             
-            appendMessage(messageContent1, 'sender1', message);
-            appendMessage(messageContent2, 'sender1', message);
+            appendMessage(messageContent1, `${nameUser1.value}`, message);
+            appendMessage(messageContent2, `${nameUser1.value}`, message);
             
             textUser1.value = '';
         }
@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
             messages.push({ sender: `${nameUser2.value}`, message });
             storeContent('user2Messages', messages);
             
-            appendMessage(messageContent2, 'sender2', message);
-            appendMessage(messageContent1, 'sender2', message);
+            appendMessage(messageContent2,  `${nameUser2.value}`, message);
+            appendMessage(messageContent1,  `${nameUser2.value}`, message);
             
             textUser2.value = '';
         }
